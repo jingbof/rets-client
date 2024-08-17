@@ -36,7 +36,7 @@ export const getObjectAction =
     const isMultipart = responseHeaders['content-type']
       ? /multipart/.test(responseHeaders['content-type'])
       : false
-    const boundaryMatches = responseHeaders['content-type'].match(/boundary=([^;]+);/)
+    const boundaryMatches = responseHeaders['content-type'].match(/boundary=([^;]+);?/)
     const boundary =
       isMultipart && boundaryMatches?.[1] ? Buffer.from(boundaryMatches[1]) : Buffer.from('')
     const boundaryPrefix = Buffer.from('--')
