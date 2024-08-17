@@ -4,9 +4,9 @@ A RETS (Real Estate Transaction Standard) Client written in Typescript.
 
 # Install
 
-if using yarn: ```yarn add @aequilibrium/rets-client```
+if using yarn: ```yarn add jingbof/rets-client```
 
-if using npm: ```npm i @aequilibrium/rets-client```
+if using npm: ```npm i jingbof/rets-client```
 
 # Usage
 
@@ -74,6 +74,22 @@ await getClient(config, async ({ search, getMetadata, getDataMap }) => {
   console.log('final Count', count)
 
   // retrieve some objects/images
+  const objects = await getObject({
+    resource: 'Property',
+    type: 'Photo',
+    contentId: '262937723',
+    // withLocation: true,
+  });
+
+  const dir = 'tests'
+  fs.mkdir(dir, { recursive: true })
+  objects.forEach((obj) => {
+    if (obj.contentType === 'image/jpeg') {
+      fs.writeFile(`${dir}/${obj.objectId}.jpg`, obj.data)
+    } else if (obj.contentType === 'text/xml') {
+      console.log(obj.location);
+    }
+  })
 })
 
 
