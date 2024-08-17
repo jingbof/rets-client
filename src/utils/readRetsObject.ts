@@ -28,10 +28,11 @@ export const readRetsObject = (buffer: Buffer): RetsObject | undefined => {
   const data = Buffer.concat(rest)
   const parsedHeader = readRetsHeaders(header)
 
-  const contentId = parsedHeader['Content-ID'] ? parsedHeader['Content-ID'] : ''
-  const objectId = parsedHeader['Object-ID'] ? parseInt(parsedHeader['Object-ID'], 10) : 1
-  const contentType = parsedHeader['Content-Type'] ? parsedHeader['Content-Type'] : ''
-  const description = parsedHeader.Description ? parsedHeader.Description : ''
+  const contentId = parsedHeader['Content-ID'] ?? ''
+  const objectId = parseInt(parsedHeader['Object-ID'], 10) || 1
+  const contentType = parsedHeader['Content-Type'] ?? ''
+  const description = parsedHeader.Description ?? ''
+  const location = parsedHeader.Location ?? ''
 
   return {
     data,
@@ -39,5 +40,6 @@ export const readRetsObject = (buffer: Buffer): RetsObject | undefined => {
     objectId,
     contentType,
     description,
+    location,
   }
 }

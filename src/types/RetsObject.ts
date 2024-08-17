@@ -4,4 +4,5 @@ export interface RetsObject {
   contentId: string
   contentType: string
   description: string
+  location: string
 }
