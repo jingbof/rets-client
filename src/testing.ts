@@ -162,6 +162,22 @@ const testObjects = async () => {
       }
     })
   })
+
+  await getClient(config, async ({ getObject }) => {
+    const objects = await getObject({
+      resource: TREBResources.Property,
+      type: TREBObjects.Photo,
+      contentId: 'N5280350',
+      withLocation: true,
+    })
+
+    console.log('objects', objects)
+    objects.forEach((obj) => {
+      if (obj.contentType === 'text/xml') {
+        console.log(obj.location)
+      }
+    })
+  })
 }
 
 const testMetadata = async () => {
