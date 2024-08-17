@@ -1,5 +1,5 @@
 {
-  "name": "@aequilibrium\/rets-client",
+  "name": "@aequilibrium/rets-client",
   "version": "0.3.10",
   "description": "RETS Client in Typescript",
   "repository": {
@@ -15,36 +15,40 @@
     "prepublishOnly": "tsc",
     "build": "tsc",
     "start": "set NODE_PATH=./dist && node --trace-uncaught ./dist/test.js",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "dependencies": {
     "@aequilibrium/xmlr": "^0.1.2",
-    "@types/tough-cookie": "^4.0.0",
-    "axios": "^0.21.1",
+    "@types/tough-cookie": "^4.0.5",
+    "axios": "^0.21.4",
     "axios-cookiejar-support": "^1.0.1",
     "dotenv": "^10.0.0",
-    "tough-cookie": "^4.0.0"
+    "tough-cookie": "^4.1.4"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.2",
-    "@typescript-eslint/eslint-plugin": "^4.25.0",
-    "@typescript-eslint/parser": "^4.25.0",
-    "eslint": "^7.27.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^15.14.9",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-import": "^2.23.3",
-    "eslint-plugin-prettier": "^3.4.0",
-    "jest": "^27.0.2",
-    "prettier": "^2.3.0",
-    "typescript": "^4.3.2"
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^3.4.1",
+    "jest": "^27.5.1",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
   },
   "bugs": {
     "url": "https://github.com/aeq/rets-client/issues"
   },
   "jest": {
     "verbose": true,
-    "modulePathIgnorePatterns": ["dist"]
+    "modulePathIgnorePatterns": [
+      "dist"
+    ]
   }
 }
