@@ -34,7 +34,7 @@ export const getObjectAction =
       : null
 
     const isMultipart = responseHeaders['content-type']
-      ? responseHeaders['content-type'].match(/multipart/).length > 0
+      ? /multipart/.test(responseHeaders['content-type'])
       : false
     const boundaryMatches = responseHeaders['content-type'].match(/boundary=([^;]+);/)
     const boundary =
