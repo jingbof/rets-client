@@ -1,15 +1,21 @@
-import { createWriteStream } from 'fs'
 import { PassThrough } from 'stream'
 
-import { StreamToString, ObjectParser } from '../stream'
-import { IRetsObjectOptions, IRetsRequestConfig, RetsFormat } from '../types'
-import { executeCall, bufferSplit } from '../utils'
-// import { promises as fs } from 'fs'
+import { ObjectParser } from '../stream'
+import { IRetsObjectOptions, IRetsRequestConfig } from '../types'
+import { executeCall } from '../utils'
 
 export const getObjectAction =
   (propsActionConfig: IRetsRequestConfig) =>
   async (userOptions: IRetsObjectOptions): Promise<Array<any>> => {
-    const { mime, resource, type, contentId, id, withLocation, culture } = {
+    const {
+      mime,
+      resource,
+      type,
+      contentId,
+      id = '*',
+      withLocation,
+      culture,
+    } = {
       ...userOptions,
     }
 
@@ -20,7 +26,9 @@ export const getObjectAction =
     const data = {
       Resource: resource,
       Type: type,
-      ID: `${contentId}:${id || '*'}`,
+      ID: (Array.isArray(contentId) ? contentId : [contentId])
+        .map((contentItem) => `${contentItem}:${id || '*'}`)
+        .join(','),
       Location: withLocation ? 1 : 0,
       // Culture: culture,
     }
@@ -29,14 +37,10 @@ export const getObjectAction =
       Accept: mime || 'image/jpeg',
     }
 
-    const { stream, headers: responseHeaders } = actionConfig
-      ? await executeCall(actionConfig, data, headers)
-      : null
+    const { stream, headers: responseHeaders } = await executeCall(actionConfig, data, headers)
 
-    const isMultipart = responseHeaders['content-type']
-      ? /multipart/.test(responseHeaders['content-type'])
-      : false
-    const boundaryMatches = responseHeaders['content-type'].match(/boundary=([^;]+);?/)
+    const isMultipart = /multipart/.test(responseHeaders['content-type'] || '')
+    const boundaryMatches = responseHeaders['content-type']?.match(/boundary=([^;]+);?/)
     const boundary =
       isMultipart && boundaryMatches?.[1] ? Buffer.from(boundaryMatches[1]) : Buffer.from('')
     const boundaryPrefix = Buffer.from('--')
@@ -48,44 +52,9 @@ export const getObjectAction =
     const outputStream = new PassThrough()
 
     stream.pipe(objectParser)
-    /// debug
-    // stream.pipe(outputStream).pipe(objectParser)
-    // outputStream.pipe(createWriteStream('test.txt'))
 
     // wait for stream to end before returning collected objects
     await new Promise((fulfill) => objectParser.on('close', fulfill))
 
     return objectParser.objects
   }
-
-// console.log('finished!!!', streamToString.parts, streamToString.toBuffer())
-
-// const parts = boundary ? bufferSplit(streamToString.toBuffer(), boundary) : []
-// const HEADER_BOUNDARY = '\n\n'
-// const HEADER_ITEM_BOUNDARY = '\n'
-
-// console.log('parts', parts.length)
-
-// return parts.map((part) => {
-//   // get headers
-//   const headerSplit = bufferSplit(part, HEADER_BOUNDARY)
-
-//   if (headerSplit.length > 1) {
-//     const header = headerSplit[0]
-//     const body = part.slice(part.indexOf(HEADER_BOUNDARY) + HEADER_BOUNDARY.length)
-//     // const headerItems = header.split(HEADER_ITEM_BOUNDARY)
-//     // const headerData = headerItems.reduce((accumulator, headerItem) => {
-//     //   const headerItemParts = headerItem.split('=')
-//     //   return {
-//     //     ...accumulator,
-//     //     ...(headerItemParts.length ? { [headerItemParts[0]]: headerItemParts[1] } : {}),
-//     //   }
-//     // }, {})
-
-//     return {
-//       // ...headerData,
-//       header,
-//       // body,
-//     }
-//   }
-//   return undefined

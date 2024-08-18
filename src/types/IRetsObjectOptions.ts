@@ -3,7 +3,7 @@ import { DdfCulture } from '.'
 export interface IRetsObjectOptions {
   resource: string
   type: string
-  contentId: string
+  contentId: string | string[]
 
   mime?: string // image/jpeg
   id?: string | undefined // *, means all objects under target resource
