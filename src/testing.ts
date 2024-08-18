@@ -158,7 +158,25 @@ const testObjects = async () => {
     console.log(`saveToFiles in directory [${dir}]`)
     objects.forEach((obj) => {
       if (obj.contentType === 'image/jpeg') {
-        fs.writeFile(`${dir}/${obj.objectId}.jpg`, obj.data)
+        fs.writeFile(`${dir}/${obj.contentId}-${obj.objectId}.jpg`, obj.data)
+      }
+    })
+  })
+
+  await getClient(config, async ({ getObject }) => {
+    const objects = await getObject({
+      resource: TREBResources.Property,
+      type: TREBObjects.Photo,
+      contentId: ['N5280350', 'N5286921'],
+    })
+
+    console.log('objects', objects)
+    const dir = 'tests'
+    fs.mkdir(dir, { recursive: true })
+    console.log(`saveToFiles in directory [${dir}]`)
+    objects.forEach((obj) => {
+      if (obj.contentType === 'image/jpeg') {
+        fs.writeFile(`${dir}/${obj.contentId}-${obj.objectId}.jpg`, obj.data)
       }
     })
   })
