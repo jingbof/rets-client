@@ -1,13 +1,13 @@
 {
-  "name": "@aequilibrium/rets-client",
-  "version": "0.3.10",
+  "name": "@jingbof/rets-client",
+  "version": "0.3.11",
   "description": "RETS Client in Typescript",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aeq/rets-client.git"
+    "url": "git+https://github.com/jingbof/rets-client.git"
   },
-  "author": "Aequilibrium Software Inc",
-  "homepage": "https://aequilibrium.com/",
+  "author": "Tabtap Lab",
+  "homepage": "https://tabtap.ca/",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index",
@@ -43,7 +43,7 @@
     "typescript": "^4.9.5"
   },
   "bugs": {
-    "url": "https://github.com/aeq/rets-client/issues"
+    "url": "https://github.com/jingbof/rets-client/issues"
   },
   "jest": {
     "verbose": true,
