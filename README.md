@@ -15,6 +15,18 @@ Or install via NPM:
 ```bash
 npm i jingbof/rets-client
 ````
+## New Features
+**1. REBGV Compatibility**
+
+Extended support for Real Estate Board of Greater Vancouver (REBGV), ensuring seamless integration for this region's data.
+
+**2. Location Support for Objects**
+
+The getObject method now includes location support, allowing for direct retrieval of location data when available.
+
+**3. Multiple Objects in Single Request**
+
+You can now request multiple objects (e.g., multiple images) in a single request for better performance and easier handling.
 
 ## Usage
 
@@ -92,18 +104,6 @@ await getClient(config, async ({ search, getMetadata, getDataMap, getObject }) =
   });
 });
 ```
-## New Features
-**REBGV Compatibility**
-
-Extended support for Real Estate Board of Greater Vancouver (REBGV), ensuring seamless integration for this region's data.
-
-**Location Support for Objects**
-
-The getObject method now includes location support, allowing for direct retrieval of location data when available.
-
-**Multiple Objects in Single Request**
-
-You can now request multiple objects (e.g., multiple images) in a single request for better performance and easier handling.
 
 ## Development/Configuration
 
