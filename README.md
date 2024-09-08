@@ -1,6 +1,6 @@
 # Typescript RETS Client
 
-A **RETS (Real Estate Transaction Standard) Client** written in TypeScript, providing seamless access to real estate data. This repo is **forked from [aeq/rets-client](https://github.com/aequilibrium/rets-client)** and extended to support **REBGV (Real Estate Board of Greater Vancouver)** along with additional features like object location retrieval and handling multiple objects in a single request.
+A **RETS (Real Estate Transaction Standards) Client** written in TypeScript, providing seamless access to real estate data. This repo is **forked from [aeq/rets-client](https://github.com/aequilibrium/rets-client)** and extended to support **REBGV (Real Estate Board of Greater Vancouver)** along with additional features like object location retrieval and handling multiple objects in a single request.
 
 ## Installation
 

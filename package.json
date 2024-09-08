@@ -1,7 +1,15 @@
 {
   "name": "@jingbof/rets-client",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "RETS (Real Estate Transaction Standards) Client in Typescript",
+  "keywords": [
+    "typescript",
+    "rets",
+    "Real Estate Transaction Standards",
+    "mls",
+    "REBGV",
+    "TRREB"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jingbof/rets-client.git"
