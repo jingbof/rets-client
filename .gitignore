@@ -41,9 +41,17 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
-# OSX hidden files
-.DS_Store
-
 dist
 
 response-*.json
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/git_toolbox_blame.xml
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/rets-client.iml
+/.idea/vcs.xml
+/package-lock.json
+/pnpm-lock.yaml

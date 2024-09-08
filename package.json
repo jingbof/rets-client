@@ -1,13 +1,12 @@
 {
   "name": "@jingbof/rets-client",
-  "version": "0.3.11",
-  "description": "RETS Client in Typescript",
+  "version": "0.3.12",
+  "description": "RETS (Real Estate Transaction Standards) Client in Typescript",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jingbof/rets-client.git"
   },
-  "author": "Tabtap Lab",
-  "homepage": "https://tabtap.ca/",
+  "author": "Jingbo",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index",

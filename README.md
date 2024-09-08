@@ -20,11 +20,15 @@ npm i jingbof/rets-client
 
 Extended support for Real Estate Board of Greater Vancouver (REBGV), ensuring seamless integration for this region's data.
 
-**2. Location Support for Objects**
+**2. Thumbnail Object Support**
 
-The getObject method now includes location support, allowing for direct retrieval of location data when available.
+Added support for the `Thumbnail` object, enabling the retrieval and display of smaller, optimized versions of images for faster loading and preview purposes.
 
-**3. Multiple Objects in Single Request**
+**3. Location Support for Objects**
+
+The `getObject` method now includes `location` support, allowing for direct retrieval of location data when available.
+
+**4. Multiple Objects in Single Request**
 
 You can now request multiple objects (e.g., multiple images) in a single request for better performance and easier handling.
 
